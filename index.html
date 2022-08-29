@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <title>To Do List</title>
+  </head>
+
+  <body>
+    <div class="todo-app">
+      <form class="add-task">
+        <input type="text" placeholder="" id="text" />
+        <input type="submit" name="submit" id="submit" value="+" />
+      </form>
+      <div class="tasks-content">
+        <span class="no-tasks" id="no-tasks">No Task To Show</span>
+        <div class="tasks">
+          <!-- <div class="task">
+            task one
+            <span class="delete">delete</span>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="task-status">
+      <div class="task-count">Tasks <span class="count">0</span></div>
+      <div class="task-completed">
+        Completed <span class="complete">0</span>
+      </div>
+    </div>
+    <script src="JS/all.min.js"></script>
+    <script src="JS/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+}
+.todo-app {
+  width: 700px;
+  margin: 30px auto 0px;
+  border-radius: 15px;
+  padding: 0px 30px;
+}
+.todo-app .add-task {
+  width: 100%;
+  background-color: #009888;
+  padding: 30px;
+  position: relative;
+}
+.todo-app .add-task input {
+  padding: 15px;
+  font-size: 20px;
+  display: inline-block;
+}
+.todo-app .add-task input:focus {
+  outline: none;
+}
+.todo-app .add-task input:first-child {
+  width: calc(100% - 50px);
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+.todo-app .add-task input:last-child {
+  width: 55px;
+  height: 55px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 50px;
+  color: #009888;
+  position: absolute;
+  right: 9%;
+  transition: 0.6s;
+}
+.todo-app .add-task input:last-child:hover {
+  transform: rotate(90deg);
+}
+.todo-app .tasks-content {
+  margin: 0px auto;
+  width: 100%;
+  background-color: #f6f6f6;
+  padding: 15px 10px;
+}
+.todo-app .tasks-content .no-tasks {
+  padding: 10px;
+  margin: 10px 0px 0px;
+  background-color: #fff;
+  display: block;
+}
+
+.todo-app .tasks-content .tasks .task {
+  padding: 10px;
+  margin: 10px 0px 0px;
+  background-color: #fff;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  font-size: 30px;
+}
+.todo-app .tasks-content .tasks .task.finish {
+  text-decoration: line-through;
+}
+.task .delete {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  font-size: 15px;
+  background: red;
+  color: #fff;
+  padding: 5px 7px;
+  border-radius: 10px;
+}
+.parent .tasks .task:hover {
+  background-color: #f7f7f7;
+}
+.task-status {
+  width: 700px;
+  margin: 10px auto;
+  padding: 0px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.task-count span {
+  background-color: #009888;
+  padding: 0px 5px;
+  color: #fff;
+  border-radius: 5px;
+}
+.task-completed span {
+  background-color: red;
+  padding: 0px 5px;
+  color: #fff;
+  border-radius: 5px;
+}
