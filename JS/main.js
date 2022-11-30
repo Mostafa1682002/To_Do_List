@@ -6,16 +6,27 @@ let inputText=document.getElementById("text"),
     count=document.querySelector(".count"),
     complete=document.querySelector(".complete");
 
-
+let arr=[];
 
 window.onload=function(){
     inputText.focus();
+    if(localStorage.length>0){
+        let date=JSON.parse(localStorage.getItem('tasks'));
+        
+        date.forEach(task => {
+            count.innerHTML++;
+            deleteNoTasks();
+            tasks.innerHTML+=`<div class="task" data-name='${task}'>
+                                ${task}
+                                <span class="delete">delete</span>
+                            </div>`;
+        });
+        arr=date;
+    }
 }
 
 
 //function to add Task
-let arr=[];
-let index=0;
 submit.onclick=function(e){
     e.preventDefault();
     if(inputText.value==''){
@@ -25,19 +36,11 @@ submit.onclick=function(e){
             if(arr.indexOf(inputText.value)>-1){
                 alert("This is Task already found")
             }else{
-                //create Task 
-                let div=document.createElement("div");
-                //add class to div
-                div.className="task ";
-                //add data-index to div
-                div.setAttribute("data-index",index++);
-                div.appendChild(document.createTextNode(inputText.value));
+                tasks.innerHTML+=`<div class="task" data-name='${inputText.value}'>
+                                    ${inputText.value}
+                                    <span class="delete" data-name='${inputText.value}'>delete</span>
+                                </div>`;
                 arr.push(inputText.value);
-                let dele=document.createElement("span");
-                dele.className="delete";
-                dele.appendChild(document.createTextNode("Delete"));
-                div.appendChild(dele);
-                tasks.appendChild(div);
                 //Input Empty
                 inputText.value='';
                 //increment count
@@ -45,6 +48,9 @@ submit.onclick=function(e){
                 inputText.focus();
                 //Delete Message No Task
                 deleteNoTasks();
+
+                //Add Array to local Storage
+                localStorage.setItem('tasks',JSON.stringify(arr));
             }
     }
 }
@@ -62,9 +68,14 @@ function deleteNoTasks(){
 document.addEventListener("click",function(e){
     //delete Element
     if(e.target.className=='delete'){
-        arr.splice(parseInt(e.target.parentElement.getAttribute("data-index")),1);
-        // arr[parseInt(e.target.parentElement.getAttribute("data-index"))]='';
+        arr.forEach((task,ind)=>{
+            console.log(e.target.parentElement);
+            if(e.target.parentElement.getAttribute("data-name")==task){
+                arr.splice(ind,1);
+            }
+        })
         e.target.parentElement.remove();
+        // arr.splice(parseInt(e.target.parentElement.getAttribute("data-index")),1);
         //decremnt count
         count.innerHTML--;
         deleteNoTasks();
@@ -79,5 +90,7 @@ document.addEventListener("click",function(e){
     let allFinshed=document.querySelectorAll(".task.finish");
     complete.innerHTML=allFinshed.length;
 
+    //Add Array to local Storage
+    localStorage.setItem('tasks',JSON.stringify(arr));
 })
 
