@@ -54,17 +54,21 @@
   margin: 10px 0px 0px;
   background-color: #fff;
   width: 100%;
-  position: relative;
   cursor: pointer;
-  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.todo-app .tasks-content .tasks .task.finish {
+.todo-app .tasks-content .tasks .task p {
+  font-size: 20px;
+  width: 90%;
+  overflow-wrap: break-word;
+}
+
+.todo-app .tasks-content .tasks .task p.finish {
   text-decoration: line-through;
 }
 .task .delete {
-  position: absolute;
-  right: 10px;
-  top: 15px;
   font-size: 15px;
   background: red;
   color: #fff;

@@ -17,7 +17,7 @@ window.onload=function(){
             count.innerHTML++;
             deleteNoTasks();
             tasks.innerHTML+=`<div class="task" data-name='${task}'>
-                                ${task}
+                                <p class="text">${task}</p>
                                 <span class="delete">delete</span>
                             </div>`;
         });
@@ -39,7 +39,8 @@ submit.onclick=function(e){
                 alert("This is Task already found")
             }else{
                 tasks.innerHTML+=`<div class="task" data-name='${inputText.value}'>
-                                    ${inputText.value}
+                                    
+                                    <p class="text">${inputText.value}</p>
                                     <span class="delete">delete</span>
                                 </div>`;
                 arr.push(inputText.value);
@@ -80,12 +81,12 @@ document.addEventListener("click",function(e){
     }
 
     //check task if finish
-    if(e.target.classList.contains("task")){
+    if(e.target.classList.contains("text")){
         e.target.classList.toggle("finish");
     }
 
     //Tasks Are Completed
-    let allFinshed=document.querySelectorAll(".task.finish");
+    let allFinshed=document.querySelectorAll(".task .finish");
     complete.innerHTML=allFinshed.length;
 
     //Add Array to local Storage
