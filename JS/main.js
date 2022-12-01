@@ -22,6 +22,8 @@ window.onload=function(){
                             </div>`;
         });
         arr=date;
+    }else{
+        arr=[];
     }
 }
 
@@ -38,7 +40,7 @@ submit.onclick=function(e){
             }else{
                 tasks.innerHTML+=`<div class="task" data-name='${inputText.value}'>
                                     ${inputText.value}
-                                    <span class="delete" data-name='${inputText.value}'>delete</span>
+                                    <span class="delete">delete</span>
                                 </div>`;
                 arr.push(inputText.value);
                 //Input Empty
@@ -68,14 +70,10 @@ function deleteNoTasks(){
 document.addEventListener("click",function(e){
     //delete Element
     if(e.target.className=='delete'){
-        arr.forEach((task,ind)=>{
-            console.log(e.target.parentElement);
-            if(e.target.parentElement.getAttribute("data-name")==task){
-                arr.splice(ind,1);
-            }
-        })
+        //Delete Element From Array
+        arr=arr.filter((task)=>task!=e.target.parentElement.getAttribute("data-name"));
+        //Delete Element From Page
         e.target.parentElement.remove();
-        // arr.splice(parseInt(e.target.parentElement.getAttribute("data-index")),1);
         //decremnt count
         count.innerHTML--;
         deleteNoTasks();
